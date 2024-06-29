@@ -3,6 +3,7 @@ print("Project Name: " .. project_name);
 
 workspace(project_name)
 	location "./build/"
+	startproject(project_name)
 	targetdir "%{wks.location}/bin/%{cfg.buildcfg}-%{cfg.platform}/"
 	objdir "%{wks.location}/obj/%{prj.name}/%{cfg.buildcfg}-%{cfg.platform}/"
 	buildlog "%{wks.location}/obj/%{cfg.platform}/%{cfg.buildcfg}-%{prj.name}.log"
