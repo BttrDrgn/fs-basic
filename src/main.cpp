@@ -1,5 +1,6 @@
 #include <parser.h>
 #include <tokenizer.h>
+#include <Windows.h>
 
 const std::string code_path = "code";
 
@@ -21,7 +22,7 @@ int main(int argc, char* argv[])
 
 	if (!std::filesystem::exists(code_path))
 	{
-		print_error("No code folder found!");
+		print_error("No code folder found at %s!", std::filesystem::current_path().string().c_str());
 		return 1;
 	}
 
@@ -33,11 +34,12 @@ int main(int argc, char* argv[])
 	{
 		auto cleaned = replace(entry.path().filename().string(), "''", "\"");
 		buffer.emplace_back(cleaned);
-		print_info("%s", cleaned.c_str());
+		print_debug("%s", cleaned.c_str());
 	}
 
 	basic_init(2048, 512); // memory size, stack size
 	basic_register_io(putchar, getchar);
+
 
 	for (auto line : buffer)
 	{
