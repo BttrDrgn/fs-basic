@@ -17,7 +17,7 @@ std::string replace(const std::string& orig, const std::string& find, const std:
 
 int main(int argc, char* argv[])
 {
-	print_info("fs-scriptor");
+	print_info("fs-basic");
 
 	if (!std::filesystem::exists(code_path))
 	{
